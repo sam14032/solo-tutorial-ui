@@ -15,6 +15,8 @@ namespace Solo.Infrastructure.Context
         public DbSet<Article> Articles { get; set; }
         public DbSet<SubTitle> SubTitles { get; set; }
         public DbSet<Paragraph> Paragraphs { get; set; }
+        public DbSet<Quest> Quests { get; set; }
+        public DbSet<Region> Regions { get; set; }
 
         public override async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
@@ -23,7 +25,20 @@ namespace Solo.Infrastructure.Context
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Article>().HasKey(x => x.Title);
+            modelBuilder.Entity<Article>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<Paragraph>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<SubTitle>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<Quest>()
+                .HasKey(x => x.Id);
+
+            modelBuilder.Entity<Region>()
+                .HasKey(x => x.Id);
         }
     }
 }
