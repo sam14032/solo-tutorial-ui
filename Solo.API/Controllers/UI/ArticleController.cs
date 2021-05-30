@@ -27,7 +27,7 @@ namespace Solo.API.Controllers.UI
         /// </summary>
         /// <response code="200">Return corresponding article.</response>
         /// <response code="404">Article not found</response>
-        [HttpGet("{Id}")]
+        [HttpGet("Id")]
         [ProducesResponseType(typeof(Article),StatusCodes.Status200OK)]
         [ProducesResponseType(StatusCodes.Status404NotFound)]
         public async Task<IActionResult> Get(long id)

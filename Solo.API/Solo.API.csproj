@@ -13,6 +13,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Solo.Domain\Solo.Domain.csproj" />
+    <ProjectReference Include="..\Solo.Infrastructure\Solo.Infrastructure.csproj" />
   </ItemGroup>
 
   <PropertyGroup>

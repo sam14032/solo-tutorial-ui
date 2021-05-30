@@ -1,10 +1,10 @@
 using System.Threading.Tasks;
-using ReadDomainArticle = Solo.Domain.UI.ArticleAggregate.Read.Article;
+using WriteDomainArticle = Solo.Domain.UI.ArticleAggregate.Write.Article;
 
 namespace Solo.Domain.SoloRepository
 {
     public interface ISoloRepository
     {
-         Task<ReadDomainArticle> GetArticle(long id);
+         Task<WriteDomainArticle> GetArticle(long id);
     }
 }

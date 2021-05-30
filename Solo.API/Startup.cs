@@ -9,10 +9,14 @@ using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
+using Solo.Domain.SoloRepository;
+using Solo.Infrastructure.Context;
+using Solo.Infrastructure.Repository;
 
 namespace Solo.API
 {
@@ -37,6 +41,15 @@ namespace Solo.API
                 var xmlPath = Path.Combine(AppContext.BaseDirectory, xmlFile);
                 c.IncludeXmlComments(xmlPath);
             });
+
+            services.AddTransient<ISoloContext, SoloContext>();
+            services.AddTransient<ISoloRepository, SoloRepository>();
+        }
+
+        public void ConfigureDevelopmentServices(IServiceCollection services)
+        {
+            ConfigureServices(services);
+            services.AddDbContext<ISoloContext ,SoloContext>(option => option.UseInMemoryDatabase("InMemory"));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
